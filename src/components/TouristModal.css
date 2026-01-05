@@ -1,0 +1,121 @@
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: var(--bg-overlay);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem;
+}
+
+.modal-content {
+  background-color: var(--bg-modal);
+  color: var(--text-primary);
+  border-radius: 12px;
+  padding: 1.5rem;
+  max-width: 600px;
+  width: 100%;
+  max-height: 90vh;
+  overflow-y: auto;
+  position: relative;
+  box-shadow: var(--shadow-lg);
+}
+
+.modal-close {
+  position: absolute;
+  top: 0.5rem;
+  right: 0.7rem;
+  background: none;
+  border: none;
+  color: var(--text-primary);
+  font-size: 1.2rem;
+  cursor: pointer;
+}
+
+.modal-description {
+  margin: 0.8rem 0;
+  font-size: 1.25rem;
+  font-weight: bold;
+  color: var(--text-secondary);
+}
+
+.modal-info p {
+  font-size: 1rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  color: var(--text-muted);
+}
+
+.modal-dates {
+  list-style: none;
+  font-size: 0.8rem;
+  color: var(--text-muted);
+}
+
+/* Deck Gallery */
+
+.deck-wrapper {
+  position: relative;
+  width: 100%;
+  min-height: 250px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 4rem 0 5rem;
+  transition: all 0.5s ease;
+}
+
+.deck-image {
+  position: absolute;
+  max-width: 100%;
+  border-radius: 8px;
+  object-fit: contain;
+  cursor: pointer;
+  box-shadow: 0 6px 15px var(--shadow-normal);
+  transition: transform 0.5s ease, opacity 0.5s ease;
+  user-select: none;
+  pointer-events: none;
+}
+
+.deck-image.active {
+  box-shadow: 0 12px 25px var(--shadow-strong);
+}
+
+/* Navigation */
+
+.deck-nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: var(--nav-bg);
+  border: none;
+  color: var(--text-primary);
+  font-size: 2rem;
+  padding: 0.2rem 0.5rem;
+  cursor: pointer;
+  border-radius: 5px;
+  z-index: 100;
+  box-shadow: var(--shadow-sm);
+}
+
+.deck-nav.left {
+  left: 5px;
+}
+
+.deck-nav.left:active {
+  transform: scale(0.95) translateY(-50%);
+}
+
+.deck-nav.right {
+  right: 5px;
+}
+
+.deck-nav.right:active {
+  transform: scale(0.95) translateY(-50%);
+}
+
+.deck-nav:hover {
+  background: var(--nav-bg-hover);
+  box-shadow: var(--shadow-sm);
+  transform: scale(1.05) translateY(-50%);
+}

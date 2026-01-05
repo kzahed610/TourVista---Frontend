@@ -1,0 +1,102 @@
+.tourist-card {
+  background-color: var(--bg-card);
+  color: var(--text-primary);
+  border-radius: 10px;
+  padding: 0.8rem;
+  cursor: pointer;
+  box-shadow: var(--shadow-md);
+  transition: all 0.2s ease;
+}
+
+.tourist-card:hover {
+  transform: scale(1.05);
+  box-shadow: var(--shadow-lg);
+}
+
+.tourist-card.dimmed {
+  opacity: 0.3;
+}
+
+.card-image {
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  overflow: hidden;
+  border-radius: 6px;
+  margin-bottom: 0.5rem;
+}
+
+.card-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.card-title {
+  font-size: 1.25rem;
+  margin-bottom: 0.3rem;
+}
+
+.card-summary {
+  font-size: 1rem;
+  color: var(--text-secondary);
+  margin-bottom: 0.75rem;
+}
+
+.card-meta {
+  list-style: none;
+  font-size: 1rem;
+  color: var(--text-muted);
+}
+
+.card-meta li {
+  margin-bottom: 0.4rem;
+}
+
+.image-wrapper {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  overflow: hidden;
+  border-radius: 6px;
+  margin-bottom: 0.5rem;
+}
+
+.image-wrapper img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.tourist-card.focused .image-wrapper {
+  aspect-ratio: auto;
+}
+
+.tourist-card.focused img {
+  height: auto;
+  object-fit: contain;
+}
+
+.nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: var(--nav-bg);
+  border: none;
+  color: var(--text-primary);
+  font-size: 1.5rem;
+  padding: 0.3rem 0.6rem;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+.nav.prev {
+  left: 5px;
+}
+
+.nav.next {
+  right: 5px;
+}
+
+.nav:hover {
+  background: var(--nav-bg-hover);
+}

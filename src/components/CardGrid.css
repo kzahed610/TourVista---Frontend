@@ -1,0 +1,16 @@
+.card-grid-wrapper {
+  padding: 2rem;
+  max-width: 1300px;
+  margin: 0 auto;
+}
+
+.results {
+  margin-bottom: 2rem;
+  opacity: 0.8;
+}
+
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
+  gap: 3rem;
+}

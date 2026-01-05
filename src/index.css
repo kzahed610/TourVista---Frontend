@@ -1,0 +1,49 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap");
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* ===== DEFAULT (DARK MODE) ===== */
+:root {
+  --bg-page: rgb(24, 24, 37);
+  --bg-card: rgb(49, 50, 68);
+  --bg-modal: rgb(49, 50, 68);
+  --bg-overlay: rgba(0, 0, 0, 0.7);
+
+  --text-primary: rgb(205, 214, 244);
+  --text-secondary: rgba(205, 214, 244, 0.85);
+  --text-muted: rgba(205, 214, 244, 0.7);
+  --font-main: "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+
+    /* ===== SHADOWS (DARK MODE) ===== */
+  --shadow-sm: 0 2px 6px rgba(0, 0, 0, 0.25);
+  --shadow-md: 0 6px 16px rgba(0, 0, 0, 0.35);
+  --shadow-lg: 0 12px 32px rgba(0, 0, 0, 0.45);
+}
+
+/* ===== LIGHT MODE ===== */
+.light-mode {
+  --bg-page: rgb(245, 224, 220);
+  --bg-card: rgb(243, 227, 224);
+  --bg-modal: rgb(243, 227, 224);
+  --bg-overlay: rgba(0, 0, 0, 0.4);
+
+  --text-primary: rgb(76, 79, 105);
+  --text-secondary: rgba(76, 79, 105, 0.85);
+  --text-muted: rgba(76, 79, 105, 0.7);
+
+  --shadow-sm: 0 2px 6px rgba(0, 0, 0, 0.12);
+  --shadow-md: 0 6px 16px rgba(0, 0, 0, 0.18);
+  --shadow-lg: 0 12px 32px rgba(0, 0, 0, 0.25);
+}
+
+/* ===== GLOBAL PAGE STYLES ===== */
+body {
+  font-family: var(--font-main);
+  background-color: var(--bg-page);
+  color: var(--text-primary);
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
