@@ -5,7 +5,7 @@ A lightweight React frontend built with Vite that displays tours and a deck-styl
 **Demo**:
 - I recorded a short walkthrough video for this frontend. The demo file is included as `public/Example.mp4` and is embedded below:
 
-<video src="./public/Example.mp4" controls width="720">Your browser does not support the video tag.</video>
+https://github.com/kzahed610/TourVista---Frontend/issues/1#issue-3780420584
 
 **Highlights**:
 - Modern React + Vite setup
