@@ -2,6 +2,18 @@
   padding: 2rem;
   max-width: 1300px;
   margin: 0 auto;
+  animation: slideIn 0.2s ease-in-out;
+}
+
+@keyframes slideIn {
+    from {
+    transform: translateX(20%);
+    opacity: 0.6;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1
+  }
 }
 
 .results {
