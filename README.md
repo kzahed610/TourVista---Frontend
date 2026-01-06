@@ -3,12 +3,16 @@
 A lightweight React frontend built with Vite that displays tours and a deck-style image gallery. This repository contains only the frontend portion — the original project includes a backend API that serves tours and images. If you forked this repo and don't have the backend available, see "Backend / API" below for options to run or mock the API locally.
 
 **Demo**:
-- I recorded a short walkthrough video for this frontend. The demo file is included as `public/Example.mp4` and is embedded below:
+- I recorded a short walkthrough video for this frontend. The demo file is included as `public/Preview-Demo.mp4` and is embedded below:
 - 
-## Demo Video
+## Preview Video
 
 
-https://github.com/user-attachments/assets/f4693062-c9eb-47e5-b940-e5bbb5ea5794
+
+
+https://github.com/user-attachments/assets/326cc513-fa0b-448b-8d27-4693d44228d2
+
+
 
 
 
