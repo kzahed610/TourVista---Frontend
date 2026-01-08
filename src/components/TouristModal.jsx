@@ -4,12 +4,16 @@ import "./TouristModal.css";
 function TouristModal({ tour, onClose }) {
   const images = [tour.imageCover, ...tour.images];
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [direction, setDirection] = useState(null); 
+  const [direction, setDirection] = useState(null);
   const [animating, setAnimating] = useState(false);
+  const [isDragging, setIsDragging] = useState(false);
+  const [dragDeltaX, setDragDeltaX] = useState(0);
 
   const dragStartX = useRef(null);
+  const isDraggingRef = useRef(false);
 
   const handleNext = () => {
+    if (animating) return;
     setDirection("next");
     setAnimating(true);
     setTimeout(() => {
@@ -19,6 +23,7 @@ function TouristModal({ tour, onClose }) {
   };
 
   const handlePrev = () => {
+    if (animating) return;
     setDirection("prev");
     setAnimating(true);
     setTimeout(() => {
@@ -27,18 +32,49 @@ function TouristModal({ tour, onClose }) {
     }, 200);
   };
 
-  // Mouse drag
-  const handleMouseDown = (e) => {
-    dragStartX.current = e.clientX;
+  const onDragStart = (clientX) => {
+    setIsDragging(true);
+    dragStartX.current = clientX;
+    isDraggingRef.current = false;
   };
 
-  const handleMouseUp = (e) => {
+  const onDragMove = (clientX) => {
+    if (!isDragging || dragStartX.current === null) return;
+    const deltaX = clientX - dragStartX.current;
+    if (Math.abs(deltaX) > 5) {
+      isDraggingRef.current = true;
+    }
+    setDragDeltaX(deltaX);
+  };
+
+  const onDragEnd = () => {
     if (dragStartX.current === null) return;
-    const deltaX = e.clientX - dragStartX.current;
-    if (deltaX > 50) handlePrev(); // swipe right
-    else if (deltaX < -50) handleNext(); // swipe left
+
+    if (dragDeltaX > 100) {
+      handlePrev();
+    } else if (dragDeltaX < -100) {
+      handleNext();
+    }
+
+    setIsDragging(false);
+    setDragDeltaX(0);
     dragStartX.current = null;
   };
+
+  // Mouse drag
+  const handleMouseDown = (e) => onDragStart(e.clientX);
+  const handleMouseMove = (e) => onDragMove(e.clientX);
+  const handleMouseUp = () => onDragEnd();
+  const handleMouseLeave = () => {
+    if (isDragging) {
+      onDragEnd();
+    }
+  };
+
+  // Touch drag
+  const handleTouchStart = (e) => onDragStart(e.touches[0].clientX);
+  const handleTouchMove = (e) => onDragMove(e.touches[0].clientX);
+  const handleTouchEnd = () => onDragEnd();
 
   const buildUrl = (img) => {
     if (!img) return "";
@@ -48,9 +84,23 @@ function TouristModal({ tour, onClose }) {
     return `/api/v1/img/tours/${img}`;
   };
 
+  const handleOverlayClick = (e) => {
+    if (isDraggingRef.current) {
+      isDraggingRef.current = false;
+      return;
+    }
+    if (e.target === e.currentTarget) {
+      onClose();
+    }
+  };
+
   return (
-    <div className="modal-overlay" onClick={onClose}>
-      <div className="modal-content" onClick={(e) => e.stopPropagation()}>
+    <div className="modal-overlay" onClick={handleOverlayClick}>
+      <div
+        className="modal-content"
+        onClick={(e) => e.stopPropagation()}
+        style={{ userSelect: isDragging ? "none" : "auto" }}
+      >
         <button className="modal-close" onClick={onClose}>
           ✕
         </button>
@@ -58,17 +108,26 @@ function TouristModal({ tour, onClose }) {
         <div
           className="deck-wrapper"
           onMouseDown={handleMouseDown}
+          onMouseMove={handleMouseMove}
           onMouseUp={handleMouseUp}
+          onMouseLeave={handleMouseLeave}
+          onTouchStart={handleTouchStart}
+          onTouchMove={handleTouchMove}
+          onTouchEnd={handleTouchEnd}
+          style={{ cursor: isDragging ? "grabbing" : "grab" }}
         >
           {images.map((img, index) => {
             const offset =
               ((index - currentIndex + images.length) % images.length) || 0;
-
             const zIndex = images.length - offset;
 
             let transform = `translateX(${offset * 10}px) translateY(${
               offset * 5
             }px) scale(${1 - offset * 0.05}) rotate(${offset * 2}deg)`;
+
+            if (isDragging && offset === 0) {
+              transform = `translateX(${dragDeltaX}px) rotate(${dragDeltaX / 20}deg)`;
+            }
 
             // Animate deck swipe
             if (animating) {
@@ -87,6 +146,10 @@ function TouristModal({ tour, onClose }) {
             }
 
             const opacity = offset > 2 ? 0 : 1;
+            const transition =
+              isDragging && offset === 0
+                ? "none"
+                : "transform 0.6s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.6s";
 
             return (
               <img
@@ -98,12 +161,10 @@ function TouristModal({ tour, onClose }) {
                   transform,
                   zIndex,
                   opacity,
-                  transition:
-                    "transform 0.6s cubic-bezier(0.4,0,0.2,1), opacity 0.6s",
+                  transition,
                   position: "absolute",
-                  cursor: "grab",
                 }}
-                onDragStart={(e) => e.preventDefault()} 
+                onDragStart={(e) => e.preventDefault()}
               />
             );
           })}
