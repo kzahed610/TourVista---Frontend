@@ -5,6 +5,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  margin-top: 3rem;
   padding: 1rem;
 }
 
@@ -36,14 +37,14 @@
 .modal-description {
   margin: 0.8rem 0;
   font-size: 1.25rem;
-  font-weight: bold;
+  font-weight: 500;
   color: var(--text-secondary);
 }
 
 .modal-info p {
   font-size: 1rem;
   font-weight: 700;
-  margin-bottom: 0.15rem;
+  margin-bottom: -1rem;
   color: var(--text-muted);
 }
 
@@ -51,6 +52,7 @@
   list-style: none;
   font-size: 0.8rem;
   color: var(--text-muted);
+  margin-top: 1.5rem;
 }
 
 /* Deck Gallery */
@@ -63,6 +65,10 @@
   justify-content: center;
   align-items: center;
   margin: 4rem 0 5rem;
+}
+
+.modal-name {
+  color: var(--text-primary);
 }
 
 .deck-image {

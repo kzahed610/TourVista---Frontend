@@ -1,0 +1,134 @@
+.header-container {
+  background-color: var(--bg-header);
+  color: var(--text-header);
+  padding: 1rem 2rem;
+  box-shadow: var(--shadow-md);
+  transition: background-color 0.3s ease, color 0.3s ease;
+  height: 6vh;
+  width: 100vw;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+}
+
+.header-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 100%;
+  margin: 0 auto;
+  height: 100%;
+}
+
+.header-logo-container {
+  display: flex;
+  justify-content: center;
+  background-color: var(--bg-header);
+  height: 6vh;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.header-logo {
+  height: 6vh;
+  width: auto;
+}
+
+.header-nav {
+  display: flex;
+  justify-content: flex-start;
+  gap: 1.5rem;
+  flex: 1;
+}
+
+.nav-link {
+  position: relative;
+}
+
+.active-link::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -6px;
+  width: 100%;
+  height: 4px;
+  background-color: var(--text-primary);
+}
+
+
+.header-nav a {
+  color: var(--text-header);
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 1.5rem;
+  transition: color 0.2s ease;
+}
+
+.header-nav a:hover {
+  color: var(--text-primary);
+}
+
+.header-actions {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 1rem;
+  flex: 1;
+}
+
+.header-signup-btn {
+  background-color: var(--bg-card);
+  color: var(--text-primary);
+  font-weight: bold;
+  border: 1px solid var(--text-primary);
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.header-signup-btn:hover {
+  background-color: var(--text-primary);
+  color: var(--bg-card);
+}
+
+.mode-toggle {
+  background: none;
+  border: none;
+  color: var(--text-header);
+  cursor: pointer;
+  font-size: 1rem;
+}
+
+@media (max-width: 768px) {
+  .header-content {
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .header-nav, .header-logo-container, .header-actions {
+    flex: none;
+    width: 100%;
+    justify-content: center;
+  }
+
+  .header-nav {
+    order: 2;
+    margin-top: 1rem;
+  }
+
+  .header-logo-container {
+    order: 1;
+    position: static;
+    left: auto;
+    top: auto;
+    transform: none;
+  }
+
+  .header-actions {
+    order: 3;
+    margin-top: 1rem;
+  }
+}
+
+

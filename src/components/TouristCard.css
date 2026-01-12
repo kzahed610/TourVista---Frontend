@@ -35,6 +35,7 @@
 .card-title {
   font-size: 1.25rem;
   margin-bottom: 0.3rem;
+  color: var(--text-primary);
 }
 
 .card-summary {

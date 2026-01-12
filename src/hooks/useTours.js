@@ -1,4 +1,5 @@
-import { useEffect, useState } from "react";
+import { useState, useEffect } from "react";
+import axios from "axios";
 
 export default function useTours() {
   const [status, setStatus] = useState("loading");
@@ -10,16 +11,13 @@ export default function useTours() {
 
     async function loadTours() {
       try {
-        const res = await fetch("/api/v1/tours");
-        const json = await res.json();
+        const res = await axios.get("/api/v1/tours");
         if (!mounted) return;
-        setStatus(json.status || (res.ok ? "success" : "error"));
-        setResults(
-          json.results || (json.data && json.data.tours ? json.data.tours.length : 0)
-        );
-        setTours((json.data && json.data.tours) || []);
+
+        setTours(res.data.data.tours || []);
+        setResults(res.data.results || 0);
+        setStatus("success");
       } catch (err) {
-        console.error("Failed to fetch tours:", err);
         if (!mounted) return;
         setStatus("error");
       }
@@ -30,7 +28,7 @@ export default function useTours() {
     return () => {
       mounted = false;
     };
-  }, []);
+  }, []); // 👈 fetch once, empty deps
 
   return { status, results, tours };
 }

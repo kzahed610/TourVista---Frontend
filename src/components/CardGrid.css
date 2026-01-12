@@ -10,7 +10,7 @@
 
 .card-grid-wrapper {
   padding: 2rem;
-  max-width: 1300px;
+  max-width: 100%;
   margin: 0 auto;
   animation: slideIn 0.2s ease-in-out;
 }
@@ -31,9 +31,13 @@
   opacity: 0.8;
 }
 
+.card-grid > div {
+  min-width: 220px; /* smaller than 380px */
+}
+
 .card-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
   gap: 3rem;
 }
 
@@ -48,6 +52,4 @@
   font-size: 1.5dvw;
   font-weight: bold;
   cursor: default;
-  margin-top: 40vh;
-  margin-left: 40vw;
 }

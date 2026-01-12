@@ -1,0 +1,10 @@
+/* FIX: This wrapper was created to fix the alignment of the login form. */
+/* WHY: After removing conflicting global styles from `AuthPanel.css`, the login form had no centering styles. */
+/* This class creates a dedicated container for the login page that uses flexbox to perfectly center the */
+/* `AuthPanel` component both vertically and horizontally. Using `100vh` (viewport height) ensures it fills the whole screen. */
+.login-page-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}

@@ -6,16 +6,29 @@
   padding: 0;
 }
 
+/* FIX: These styles establish a stable, full-height layout foundation for the entire application. */
+/* WHY: The original layout was unpredictable, causing components to render partially off-screen. */
+/* By setting `height: 100%` on `html`, `body`, and the React app's `#root` div, we ensure the main container */
+/* always fills the full browser viewport. This gives all child components, like the pages, a reliable */
+/* and correctly-sized space to render in, fixing the alignment problems. */
+html,
+body,
+#root {
+  height: 100%;
+}
+
 /* ===== DEFAULT (DARK MODE) ===== */
 :root {
   --bg-page: rgb(24, 24, 37);
   --bg-card: rgb(49, 50, 68);
   --bg-modal: rgb(49, 50, 68);
   --bg-overlay: rgba(0, 0, 0, 0.7);
+  --bg-header: rgb(36, 37, 51);
 
   --text-primary: rgb(205, 214, 244);
   --text-secondary: rgba(205, 214, 244, 0.85);
   --text-muted: rgba(205, 214, 244, 0.7);
+  --text-header: rgb(205, 214, 244);
   --font-main: "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
 
     /* ===== SHADOWS (DARK MODE) ===== */
@@ -30,10 +43,12 @@
   --bg-card: rgb(243, 227, 224);
   --bg-modal: rgb(243, 227, 224);
   --bg-overlay: rgba(0, 0, 0, 0.4);
+  --bg-header: rgb(237, 215, 211);
 
   --text-primary: rgb(76, 79, 105);
   --text-secondary: rgba(76, 79, 105, 0.85);
   --text-muted: rgba(76, 79, 105, 0.7);
+  --text-header: rgb(76, 79, 105);
 
   --shadow-sm: 0 2px 6px rgba(0, 0, 0, 0.12);
   --shadow-md: 0 6px 16px rgba(0, 0, 0, 0.18);

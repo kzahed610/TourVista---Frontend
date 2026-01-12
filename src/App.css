@@ -1,18 +1,9 @@
-.mode-toggle {
-  position: fixed;
-  top: 1rem;
-  right: 1rem;
-  padding: 0.5rem 0.8rem;
-  background: var(--bg-card);
-  color: var(--text-primary);
-  border: none;
-  border-radius: 6px;
-  cursor: pointer;
-  z-index: 1000;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
-  transition: transform 0.2s ease;
+.content-container {
+  padding-top: 82px; /* Height of the header */
 }
 
-.mode-toggle:hover {
-  transform: scale(1.05);
+@media (max-width: 768px) {
+  .content-container {
+    padding-top: 190px;
+  }
 }
