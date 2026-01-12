@@ -7,7 +7,7 @@ A lightweight React frontend built with Vite that displays tours and a deck-styl
 - 
 ## Preview Video
 
-
+(The video is outdated and does not cover recent updates.)
 
 
 https://github.com/user-attachments/assets/326cc513-fa0b-448b-8d27-4693d44228d2
